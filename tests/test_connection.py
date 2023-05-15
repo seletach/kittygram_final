@@ -77,10 +77,17 @@ def test_link_connection(
             assert_msg_template.format(project_name=cats_project_name)
         )
     else:
-        taski_response = requests.get(f'{link}/api/tasks/')
-        assert taski_response.status_code == HTTPStatus.OK, (
-            assert_msg_template.format(project_name=taski_project_name)
+        assert_msg = assert_msg_template.format(
+            project_name=taski_project_name
         )
+        js_link = _get_js_link(response)
+        assert js_link, assert_msg
+        try:
+            taski_response = requests.get(f'{link}/{js_link}')
+        except requests.exceptions.ConnectionError:
+            raise AssertionError(assert_msg)
+        assert taski_response.status_code == HTTPStatus.OK, assert_msg
+        assert taski_project_name in taski_response.text, assert_msg
 
 
 def test_projects_on_same_ip(

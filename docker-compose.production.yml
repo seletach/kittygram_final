@@ -13,7 +13,7 @@ services:
       - pg_data:/var/lib/postgresql/data
   
   backend:
-    build: ./backend/
+    image: seletach/kittygram_backend:v3
     env_file: .env
     depends_on:
       - db
@@ -23,7 +23,7 @@ services:
   
   frontend:
     env_file: .env
-    build: ./frontend/
+    image: seletach/kittygram_frontend:v2
     depends_on:
       - backend
     command: cp -r /app/build/. /static/
@@ -31,7 +31,7 @@ services:
       - static:/static
   
   gateway:
-    build: ./nginx/
+    image: seletach/kittygram_gateway
     env_file: .env
     depends_on:
       - frontend   

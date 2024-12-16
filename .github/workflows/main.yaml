@@ -28,10 +28,9 @@ jobs:
 
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip 
-        pip install flake8==6.0.0 flake8-isort==6.0.0
+        python -m pip install --upgrade pip
         pip install -r ./backend/requirements.txt 
-    
+
     - name: Test with flake8 and django tests
       env:
         POSTGRES_USER: django_user
@@ -43,6 +42,8 @@ jobs:
         python -m flake8 backend/
         cd backend/
         python manage.py test
+
+jobs:
   build_and_push_to_docker_hub:
     name: Push Docker image to DockerHub
     runs-on: ubuntu-latest
@@ -184,4 +185,3 @@ jobs:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: Деплой успешно выполнен!
-  

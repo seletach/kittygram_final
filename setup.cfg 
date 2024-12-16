@@ -3,10 +3,10 @@ ignore =
     W503,
     F811
 exclude = 
-    cats/,
-    kittygram_backend/asgi.py,
-    kittygram_backend/urls.py,
-    kittygram_backend/wsgi.py,
-    manage.py
+    backend/cats/*,
+    backend/kittygram_backend/asgi.py,
+    backend/kittygram_backend/urls.py,
+    backend/kittygram_backend/wsgi.py,
+    backend/manage.py
 per-file-ignores =
     */settings.py:E501 

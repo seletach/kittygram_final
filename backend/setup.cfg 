@@ -1,0 +1,12 @@
+[flake8]
+ignore = 
+    W503,
+    F811
+exclude = 
+    cats/,
+    kittygram_backend/asgi.py,
+    kittygram_backend/urls.py,
+    kittygram_backend/wsgi.py,
+    manage.py
+per-file-ignores =
+    */settings.py:E501 

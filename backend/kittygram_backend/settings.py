@@ -8,13 +8,10 @@ load_dotenv(find_dotenv())
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY', 'SECRET_KEY')
 DEBUG = True
 
-ALLOWED_HOSTS = ['89.169.162.189', 'seletachqwerty1111.zapto.org', 'localhost']
-# ALLOWED_HOSTS = ['localhost']
-# ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
-# ALLOWED_HOSTS = [os.getenv('IP'), os.getenv('DOMAIN'), 'localhost']
+ALLOWED_HOSTS = [os.getenv('IP'), os.getenv('DOMAIN'), 'localhost']
 
 INSTALLED_APPS = [
     'django.contrib.admin',

@@ -5,7 +5,7 @@ load_dotenv(find_dotenv())
 
 
 SECRET_KEY = os.getenv('SECRET_KEY')
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split(',')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split()
 X='watermelon','apple','melon','wildberris'
 
 print(X)

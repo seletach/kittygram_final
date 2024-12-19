@@ -8,5 +8,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split()
 X='watermelon','apple','melon','wildberris'
 
-print(X)
-print(ALLOWED_HOSTS)
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
+
+print(type(DEBUG))
+print(DEBUG)

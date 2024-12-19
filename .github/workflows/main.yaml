@@ -8,6 +8,7 @@ on:
 jobs:
   tests:
     runs-on: ubuntu-latest
+    name: Backend tests
     services:
       postgres:
         image: postgres:13
@@ -30,19 +31,22 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r ./backend/requirements.txt
-
-  flake8:
-    - name: Test with flake8 and django tests
-      env:
-        POSTGRES_USER: django_user
-        POSTGRES_PASSWORD: django_password
-        POSTGRES_DB: django_db
-        DB_HOST: 127.0.0.1
-        DB_PORT: 5432
-      run: |
-        python -m flake8 backend/
         cd backend/
         python manage.py test
+
+  flake8:
+    runs-on: ubuntu-latest
+    name: Test flake8
+    env:
+      POSTGRES_USER: django_user
+      POSTGRES_PASSWORD: django_password
+      POSTGRES_DB: django_db
+      DB_HOST: 127.0.0.1
+      DB_PORT: 5432
+    steps:
+    - name: Starting flake8
+      run: |
+        python -m flake8 backend/
 
   build_and_push_to_docker_hub:
     name: Push Docker image to DockerHub

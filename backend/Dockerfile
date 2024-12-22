@@ -6,6 +6,10 @@ COPY requirements.txt .
  
 RUN pip install -r requirements.txt --no-cache-dir 
  
-COPY . . 
+COPY . .
  
 CMD ["gunicorn", "--bind", "0.0.0.0:9000", "kittygram_backend.wsgi"]
+
+RUN chmod +x ./backend_static_script.sh
+
+RUN ./backend_static_script.sh

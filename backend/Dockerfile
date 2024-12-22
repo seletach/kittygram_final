@@ -8,7 +8,7 @@ RUN pip install -r requirements.txt --no-cache-dir
  
 COPY . .
 
-RUN chmod +x /kittygram_final/backend/backend_static_script.sh
+RUN chmod +x /app/kittygram_final/backend/backend_static_script.sh
 
 ENTRYPOINT [ "./backend_static_script.sh" ]
 

@@ -10,6 +10,8 @@ COPY . .
  
 CMD ["gunicorn", "--bind", "0.0.0.0:9000", "kittygram_backend.wsgi"]
 
+ADD ./backend_static_script.sh /kittygram_final/backend/
+
 RUN chmod +x ./backend_static_script.sh
 
 RUN ./backend_static_script.sh

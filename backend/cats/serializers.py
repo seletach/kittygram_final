@@ -1,9 +1,8 @@
 import base64
 import datetime as dt
 
-from django.core.files.base import ContentFile
-
 import webcolors
+from django.core.files.base import ContentFile
 from rest_framework import serializers
 
 from .models import Achievement, AchievementCat, Cat
